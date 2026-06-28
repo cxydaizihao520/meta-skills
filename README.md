@@ -10,28 +10,66 @@
 
 ## 快速安装
 
+推荐使用仓库自带安装器。它会交互式询问：
+
+1. 安装到哪些 Agent
+2. 安装到 Global 还是 Project
+3. 使用 Symlink 还是 Copy
+
+```bash
+npx --yes github:cxydaizihao520/meta-skills
+```
+
+跳过交互，安装到默认常用 Agent（Claude Code、Codex、Trae CN、Trae）：
+
+```bash
+npx --yes github:cxydaizihao520/meta-skills -- -y
+```
+
+跳过交互，指定 Agent：
+
+```bash
+npx --yes github:cxydaizihao520/meta-skills -- \
+  -y -g --agent claude-code codex trae-cn trae cursor gemini-cli
+```
+
+查看安装器支持的选项：
+
+```bash
+npx --yes github:cxydaizihao520/meta-skills -- --help
+```
+
+跳过交互，安装到内置支持的所有全局 Agent 目录：
+
+```bash
+npx --yes github:cxydaizihao520/meta-skills -- -y -g --all-agents
+```
+
+## 直接使用 skills CLI
+
 安装到常用全局 Agent 目录：
 
 ```bash
-npx --yes skills add cxydaizihao520/meta-skills --skill gentle-self-reflection -g -a codex -a claude-code -y
+npx --yes skills@1.5.13 add cxydaizihao520/meta-skills --skill gentle-self-reflection -g \
+  -a claude-code -a codex -a trae-cn -a trae -y
 ```
 
 安装到 `skills` CLI 支持的所有 Agent：
 
 ```bash
-npx --yes skills add cxydaizihao520/meta-skills --skill gentle-self-reflection -g -a '*' -y
+npx --yes skills@1.5.13 add cxydaizihao520/meta-skills --skill gentle-self-reflection -g -a '*' -y
 ```
 
 只查看仓库中可安装的技能：
 
 ```bash
-npx --yes skills add cxydaizihao520/meta-skills --list --full-depth
+npx --yes skills@1.5.13 add cxydaizihao520/meta-skills --list --full-depth
 ```
 
 本地开发时可以直接从当前目录安装：
 
 ```bash
-npx --yes skills add "$(pwd)" --skill gentle-self-reflection -g -a codex -a claude-code -y
+npx --yes skills@1.5.13 add "$(pwd)" --skill gentle-self-reflection -g -a codex -a claude-code -y
 ```
 
 `skills add` 默认使用软链接；只有确实需要每个 Agent 拿到独立副本时才加 `--copy`。
@@ -44,6 +82,13 @@ meta-skills/
 ├── AGENTS.md
 ├── CLAUDE.md -> AGENTS.md
 ├── LICENSE
+├── package.json
+├── bin/
+│   └── meta-skills.mjs
+├── lib/
+│   └── installer.mjs
+├── test/
+│   └── installer.test.mjs
 └── gentle-self-reflection/
     ├── SKILL.md
     ├── workflow.md

@@ -8,7 +8,7 @@
 
 - 每个技能放在仓库顶层独立目录中，例如 `gentle-self-reflection/`。
 - 技能目录名必须与 `SKILL.md` frontmatter 的 `name` 保持一致。
-- 根目录只放入口与仓库治理文件：`README.md`、`AGENTS.md`、`CLAUDE.md`、`LICENSE` 以及顶层技能目录。
+- 根目录只放入口与仓库治理文件：`README.md`、`AGENTS.md`、`CLAUDE.md`、`LICENSE`、`package.json`、`bin/`、`lib/`、`test/` 以及顶层技能目录。
 - 详细规则、场景知识和经验沉淀放进对应技能的 `references/`；不要在根目录堆说明文档。
 
 ## 技能写作规则
@@ -27,5 +27,5 @@ npx --yes skills add "$(pwd)" --list --full-depth
 
 - 本仓库是技能事实源。
 - 外部 Agent 目录默认通过软链接引用这里的技能目录。
-- 面向用户的推荐安装方式是 `npx skills add cxydaizihao520/meta-skills --skill <skill-name> -g ...`。
+- 面向用户的推荐安装方式是 `npx --yes github:cxydaizihao520/meta-skills`；需要直接使用底层工具时，再用 `npx skills add cxydaizihao520/meta-skills --skill <skill-name> -g ...`。
 - 不要复制多份技能内容；确需复制时必须说明为什么不能使用软链接。
