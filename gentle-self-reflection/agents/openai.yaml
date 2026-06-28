@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gentle Self-Reflection"
+  short_description: "高风险或不确定任务中的自我反思、风险纠偏与经验沉淀"
+  default_prompt: "使用 $gentle-self-reflection 梳理当前任务的目标、假设、风险与可沉淀经验。"
